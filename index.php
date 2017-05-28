@@ -21,19 +21,24 @@
 	 $arus = $_GET['arus'];
 	 $kecepatan = $_GET['kecepatan'];
 	 $rpm = $_GET['rpm'];
+	 $waktu = $_GET['waktu'];
+	
+	$data = array(
+		'lat' => $lat, 
+		'long' => $long, 
+		'x' => $x, 
+		'y' => $y, 
+		'z' => $z, 
+		'arus' => $arus, 
+		'kecepatan' => $kecepatan, 
+		'rpm' => $rpm, 
+		'waktu' => $waktu, 
+	);    
     
-    echo $lat;
+   	var_dump($data);
 
-	echo $long ."<br>";
-	echo $x ."<br>";
-	echo $y ."<br>";
-	echo $z ."<br>";
-	echo $arus ."<br>";
-	echo $kecepatan ."<br>";
-	echo $rpm ."<br>";
-	// $database = $firebase->getDatabase();
+	$database = $firebase->getDatabase();
 
-	// $cars = $database->getReference('cars')->getValue();
+	$post = $database->getReference('cars')->push($data);
 
-	// var_dump($cars);
  ?>
